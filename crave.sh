@@ -3,7 +3,7 @@
 set -e
 #Credit to Meghthedev for the initial script 
 
-export PROJECTFOLDER="Lineage22.1"
+export PROJECTFOLDER="LOS22.1"
 export PROJECTID="93"
 export REPO_INIT="repo init -u https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
 export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs" # Change this if you'd like to build something else
