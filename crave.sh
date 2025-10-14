@@ -8,6 +8,24 @@ export PROJECTID="93"
 export REPO_INIT="repo init -u https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
 export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs" # Change this if you'd like to build something else
 
+# Destroy Old Clones
+if (grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"')) || [ "${DCDEVSPACE}" == "1" ]; then   
+   crave clone destroy -y /crave-devspaces/$PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
+else
+   rm -rf $PROJECTFOLDER || true
+fi
+
+# Create New clone
+if [ "${DCDEVSPACE}" == "1" ]; then
+   crave clone create --projectID $PROJECTID /crave-devspaces/$PROJECTFOLDER || echo "Crave clone create failed!"
+   cd /crave-devspaces/$PROJECTFOLDER
+else
+   mkdir $PROJECTFOLDER
+   cd $PROJECTFOLDER
+   echo "Running $REPO_INIT"
+   $REPO_INIT
+fi
+
 # Run inside foss.crave.io devspace
 # Remove existing local_manifests
 crave run --no-patch -- "rm -rf .repo/local_manifests && \
