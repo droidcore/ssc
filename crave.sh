@@ -34,7 +34,7 @@ crave run --no-patch -- "rm -rf .repo/local_manifests && \
 $BUILD_DIFFERENT_ROM && \
 
 # Clone local_manifests repository
-git clone https://github.com/droidcore/local_manifest --depth 1 -b lineages-23.0 .repo/local_manifests && \
+git clone https://github.com/droidcore/local_manifest.git --depth 1 -b lineages-23.0 .repo/local_manifests && \
 
  # Sync the repositories
  /opt/crave/resync.sh && \ 
