@@ -46,7 +46,7 @@ source build/envsetup.sh && \
 lunch lineage_peridot-user && \
 
 # Build the ROM
-mka bacon"
+m lunaris"
 
 OUT_DIR="/crave-devspaces/$PROJECTFOLDER/out/target/product/$DEVICE"
 
