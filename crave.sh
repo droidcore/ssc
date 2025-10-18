@@ -28,7 +28,7 @@ fi
 
 # Run inside foss.crave.io devspace
 # Remove existing local_manifests
-crave run --no-patch -- "rm -rf .repo/local_manifests && \
+crave run --no-patch --clean "rm -rf .repo/local_manifests && \
 
 # Init Manifest
 $BUILD_DIFFERENT_ROM && \
@@ -47,23 +47,6 @@ lunch lineage_peridot-user && \
 
 # Build the ROM
 m lunaris"
-
-OUT_DIR="/crave-devspaces/$PROJECTFOLDER/out/target/product/$DEVICE"
-
-ROM_ZIP=$(find "$OUT_DIR" -type f -name "*.zip" | head -n 1)
-BOOT_IMG="$OUT_DIR/boot.img"
-DTBO_IMG="$OUT_DIR/dtbo.img"
-VENDOR_BOOT_IMG="$OUT_DIR/vendor_boot.img"
-
-wget https://raw.githubusercontent.com/GustavoMends/go-up/master/go-up
-chmod +x go-up
-
-./go-up "$ROM_ZIP"
-./go-up "$BOOT_IMG"
-./go-up "$DTBO_IMG"
-if [ -f "$VENDOR_BOOT_IMG" ]; then
-    ./go-up "$VENDOR_BOOT_IMG"
-fi
 
 # Clean up
 if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') || [ "${DCDEVSPACE}" == "1" ]; then
