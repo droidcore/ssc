@@ -28,7 +28,7 @@ fi
 
 # Run inside foss.crave.io devspace
 # Remove existing local_manifests
-crave run --no-patch --clean "rm -rf .repo/local_manifests && \
+crave run --no-patch -- "rm -rf .repo/local_manifests && \
 
 # Init Manifest
 $BUILD_DIFFERENT_ROM && \
