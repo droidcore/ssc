@@ -42,11 +42,11 @@ git clone https://github.com/droidcore/local_manifest.git --depth 1 -b lineages-
 # Set up build environment
 source build/envsetup.sh && \
 
-# Clean build (installclean)
-make installclean && \
-
 # Lunch configuration
 lunch lineage_peridot-user && \
+
+# Clean build (installclean)
+make installclean && \
 
 # Build the ROM
 m lunaris"
