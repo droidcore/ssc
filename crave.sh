@@ -45,9 +45,6 @@ source build/envsetup.sh && \
 # Lunch configuration
 lunch lineage_peridot-user && \
 
-# Clean build (installclean)
-make installclean && \
-
 # Build the ROM
 m lunaris"
 
