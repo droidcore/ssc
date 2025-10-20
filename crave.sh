@@ -36,7 +36,6 @@ fi
 # Run inside Crave devspace
 # ================================
 crave run --no-patch -- "
-  set -e
   # ================================
   # Clean old manifests
   # ================================
@@ -75,19 +74,4 @@ crave run --no-patch -- "
   lunch lineage_peridot-bp2a-user
   make installclean
   m lunaris
-
-  # ================================
-  # Upload build ZIP
-  # ================================
-  echo '>>> Uploading final build ZIP to GoFile'
-  cd out/target/product/peridot || exit 1
-  BUILD_ZIP=\$(ls *.zip 2>/dev/null | tail -n 1)
-  if [ -n \"\$BUILD_ZIP\" ]; then
-    curl -sLo upload.sh https://raw.githubusercontent.com/Sushrut1101/GoFile-Upload/refs/heads/master/upload.sh
-    chmod +x upload.sh
-    ./upload.sh \"\$BUILD_ZIP\" | tee upload_link.txt
-    echo '>>> Upload complete. Link saved to upload_link.txt'
-  else
-    echo 'No build ZIP found to upload.'
-  fi
 "
