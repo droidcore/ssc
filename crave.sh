@@ -36,4 +36,5 @@ export TZ=Asia/Jakarta
 # ================================
 echo ">>> Starting RisingOS Build"
 lunch lineage_peridot-bp2a-user
+make installclean
 m lunaris
