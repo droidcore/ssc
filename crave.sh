@@ -71,7 +71,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch infinity_peridot-bp2a-user
+  lunch infinity_peridot-user
   make installclean
   m bacon
 "
