@@ -7,7 +7,7 @@ set -e
 export PROJECTFOLDER="LOS"
 export PROJECTID="93"
 export REPO_INIT="repo init -u https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
-export BUILD_DIFFERENT_ROM="repo init --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault" # Change this if you'd like to build something else
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -40,12 +40,11 @@ crave run --no-patch -- "
   # Clean old manifests
   # ================================
   rm -rf .repo/local_manifests
-  rm -rf device/xiaomi/peridot
-
+  rm -rf device/Xiaomi/peridot
   # ================================
-  # Initialize Infinity X repo
+  # Initialize Lunaris-AOSP repo
   # ================================
-  echo '>>> Initializing Infinity Xrepo'
+  echo '>>> Initializing Lunaris-AOSP repo'
   $BUILD_DIFFERENT_ROM
 
   # ================================
@@ -63,7 +62,7 @@ crave run --no-patch -- "
   # ================================
   # Setup build environment
   # ================================
-  source build/envsetup.sh
+  . b*/env*
   export BUILD_USERNAME=BLU
   export BUILD_HOSTNAME=crave
   export TZ=Asia/Jakarta
@@ -72,7 +71,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch infinity_peridot-user
+  lunch lineage_peridot-bp2a-user
   make installclean
-  m bacon
+  m lunaris
 "
