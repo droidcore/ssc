@@ -42,7 +42,7 @@ crave run --no-patch -- "
   rm -rf .repo/local_manifests
   rm -rf device/Xiaomi/peridot
   rm -rf out/target/product/peridot
-  rm -rf out
+  
   # ================================
   # Initialize Lunaris-AOSP repo
   # ================================
