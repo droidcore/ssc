@@ -40,7 +40,7 @@ crave run --no-patch -- "
   # Clean old manifests
   # ================================
   rm -rf .repo/local_manifests
-  rm -rf device/Xiaomi/peridot
+  rm -rf device/xiaomi/peridot
   rm -rf out/target/product/peridot
   
   # ================================
