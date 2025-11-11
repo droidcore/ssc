@@ -4,10 +4,10 @@ set -e
 # ================================
 # Project Configuration
 # ================================
-export PROJECTFOLDER="RisingOS"
-export PROJECTID="86"
+export PROJECTFOLDER="LOS"
+export PROJECTID="93"
 export REPO_INIT="repo init -u https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/RisingOS-Revived/android -b sixteen --git-lfs" # Change this if you'd like to build something else
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -44,9 +44,9 @@ crave run --no-patch -- "
   rm -rf out/target/product/peridot
   
   # ================================
-  # Initialize RisingOS repo
+  # Initialize Lunaris-AOSP repo
   # ================================
-  echo '>>> Initializing RisingOS repo'
+  echo '>>> Initializing Lunaris-AOSP repo'
   $BUILD_DIFFERENT_ROM
 
   # ================================
@@ -64,7 +64,7 @@ crave run --no-patch -- "
   # ================================
   # Setup build environment
   # ================================
-  . build/envsetup.sh
+  . b*/env*
   export BUILD_USERNAME=BLU
   export BUILD_HOSTNAME=crave
   export TZ=Asia/Jakarta
@@ -73,7 +73,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  riseup peridot user
+  lunch lineage_peridot-bp2a-user
   make installclean
-  rise b
+  m lunaris
 "
