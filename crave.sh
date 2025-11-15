@@ -7,7 +7,7 @@ set -e
 export PROJECTFOLDER="aosp"
 export PROJECTID="35"
 export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest"
-export BUILD_DIFFERENT_ROM="repo init -u repo init -u https://github.com/Evolution-X/manifest -b bka-q1 --git-lfs" # Change this if you'd like to build something else
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Evolution-X/manifest -b bka-q1 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
