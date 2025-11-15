@@ -4,10 +4,10 @@ set -e
 # ================================
 # Project Configuration
 # ================================
-export PROJECTFOLDER="LOS"
-export PROJECTID="93"
-export REPO_INIT="repo init -u https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs" # Change this if you'd like to build something else
+export PROJECTFOLDER="aosp"
+export PROJECTID="35"
+export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest"
+export BUILD_DIFFERENT_ROM="repo init -u repo init -u https://github.com/Evolution-X/manifest -b bka-q1 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -64,7 +64,7 @@ crave run --no-patch -- "
   # ================================
   # Setup build environment
   # ================================
-  . b*/env*
+  . build/envsetup.sh
   export BUILD_USERNAME=BLU
   export BUILD_HOSTNAME=crave
   export TZ=Asia/Jakarta
@@ -73,7 +73,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch lineage_peridot-bp2a-user
+  lunch lineage_peridot-bp3a-userdebug
   make installclean
-  m lunaris
+  m evolution
 "
