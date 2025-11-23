@@ -44,7 +44,7 @@ crave run --no-patch -- "
   rm -rf out/target/product/peridot
   
   # ================================
-  # Initialize Lunaris-AOSP repo
+  # Initialize Evox repo
   # ================================
   echo '>>> Initializing Lunaris-AOSP repo'
   $BUILD_DIFFERENT_ROM
@@ -73,7 +73,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch lineage_peridot-bp3a-userdebug
+  lunch lineage_peridot-bp3a-user
   make installclean
   m evolution 
 "
