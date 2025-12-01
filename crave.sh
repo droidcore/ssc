@@ -35,7 +35,7 @@ fi
 # ================================
 # Run inside Crave devspace
 # ================================
-crave run --no-patch --platform aosp-silver -- "
+crave run --no-patch -- "
   # ================================
   # Clean old manifests
   # ================================
