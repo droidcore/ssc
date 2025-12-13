@@ -4,10 +4,10 @@ set -e
 # ================================
 # Project Configuration
 # ================================
-export PROJECTFOLDER="aosp"
-export PROJECTID="35"
-export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Evolution-X/manifest -b bq1 --git-lfs" # Change this if you'd like to build something else
+export PROJECTFOLDER="LOS"
+export PROJECTID="93"
+export REPO_INIT="repo init -u https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -44,7 +44,7 @@ crave run --no-patch -- "
   rm -rf out/target/product/peridot
   
   # ================================
-  # Initialize Evox repo
+  # Initialize Lunaris-AOSP repo
   # ================================
   echo '>>> Initializing Lunaris-AOSP repo'
   $BUILD_DIFFERENT_ROM
@@ -53,7 +53,7 @@ crave run --no-patch -- "
   # Clone local manifests
   # ================================
   echo '>>> Cloning local manifests'
-  git clone https://github.com/droidcore/manifest_peridot.git -b lineage-23.0 .repo/local_manifests/
+  git clone https://github.com/droidcore/local_manifest.git --depth 1 -b lineages-23.0 .repo/local_manifests
 
   # ================================
   # Sync sources
@@ -64,7 +64,7 @@ crave run --no-patch -- "
   # ================================
   # Setup build environment
   # ================================
-  . build/envsetup.sh
+  . b*/env*
   export BUILD_USERNAME=BLU
   export BUILD_HOSTNAME=crave
   export TZ=Asia/Jakarta
@@ -73,7 +73,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch lineage_peridot-bp3a-user
+  lunch lineage_peridot-bp2a-user
   make installclean
-  m evolution 
+  m lunaris
 "
