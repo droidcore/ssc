@@ -74,5 +74,5 @@ crave run --no-patch -- "
   echo '>>> Starting build'
   axion peridot user gms core
   make installclean
-  ax -br -j$(nproc --all)
+  ax -br
 "
