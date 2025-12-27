@@ -7,7 +7,7 @@ set -e
 export PROJECTFOLDER="LOS"
 export PROJECTID="93"
 export REPO_INIT="https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.1 --git-lfs"
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Lunaris-AOSP/android -b 16 --git-lfs"
 # ================================
 # Destroy Old Clones
 # ================================
@@ -63,7 +63,7 @@ crave run --no-patch -- "
   # ================================
   # Setup build environment
   # ================================
-  . build/envsetup.sh
+  . b*/env*
   export BUILD_USERNAME=BLU
   export BUILD_HOSTNAME=crave
   export TZ=Asia/Jakarta
@@ -72,7 +72,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  axion peridot user gms core
+  lunch lineage_peridot-bp2a-user
   make installclean
-  ax -br
+  m lunaris
 "
