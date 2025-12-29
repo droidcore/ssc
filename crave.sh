@@ -65,9 +65,6 @@ crave run --no-patch -- "
   # Setup build environment
   # ================================
   . build/envsetup.sh
-  export BUILD_USERNAME=BLU
-  export BUILD_HOSTNAME=crave
-  export TZ=Asia/Jakarta
 
   # ================================
   # Build
