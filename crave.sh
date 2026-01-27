@@ -4,10 +4,10 @@ set -e
 # ================================
 # Project Configuration
 # ================================
-export PROJECTFOLDER="aosp"
-export PROJECTID="35"
-export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs" # Change this if you'd like to build something else
+export PROJECTFOLDER="LOS"
+export PROJECTID="93"
+export REPO_INIT="https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.1 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -44,16 +44,16 @@ crave run --no-patch -- "
   rm -rf out/target/product/peridot
   
   # ================================
-  # Initialize Evox repo
+  # Initialize AxionOS repo
   # ================================
-  echo '>>> Initializing Lunaris-AOSP repo'
+  echo '>>> Initializing AxionAOSP repo'
   $BUILD_DIFFERENT_ROM
 
   # ================================
   # Clone local manifests
   # ================================
   echo '>>> Cloning local manifests'
-  git clone https://github.com/droidcore/manifest_peridot.git -b lineage-23.0 .repo/local_manifests/
+  git clone https://github.com/ryznstk/manifest_peridot.git -b lineage-23.0 .repo/local_manifests/
 
   # ================================
   # Sync sources
@@ -70,7 +70,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch lineage_peridot-bp4a-userdebug
+  axion peridot user gms core
   make installclean
-  m evolution 
+  ax -br
 "
