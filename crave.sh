@@ -4,10 +4,10 @@ set -e
 # ================================
 # Project Configuration
 # ================================
-export PROJECTFOLDER="LOS"
-export PROJECTID="93"
-export REPO_INIT="https://github.com/accupara/los22.git -b lineage-22.1 --git-lfs --depth=1"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.1 --git-lfs" # Change this if you'd like to build something else
+export PROJECTFOLDER="aosp"
+export PROJECTID="35"
+export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest"
+export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -44,9 +44,9 @@ crave run --no-patch -- "
   rm -rf out/target/product/peridot
   
   # ================================
-  # Initialize AxionOS repo
+  # Initialize Evox repo
   # ================================
-  echo '>>> Initializing AxionAOSP repo'
+  echo '>>> Initializing Evox repo'
   $BUILD_DIFFERENT_ROM
 
   # ================================
@@ -70,7 +70,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  axion peridot user gms core
+  lunch lineage_peridot-bp4a-user
   make installclean
-  ax -br
+  m evolution 
 "
