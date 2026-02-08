@@ -7,7 +7,7 @@ set -e
 export PROJECTFOLDER="aosp"
 export PROJECTID="35"
 export REPO_INIT="repo init -u https://android.googlesource.com/platform/manifest"
-export BUILD_DIFFERENT_ROM="repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs" # Change this if you'd like to build something else
+export BUILD_DIFFERENT_ROM="repo init --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault" # Change this if you'd like to build something else
 
 # ================================
 # Destroy Old Clones
@@ -44,16 +44,16 @@ crave run --no-patch -- "
   rm -rf out/target/product/peridot
   
   # ================================
-  # Initialize Evox repo
+  # Initialize InfinityX repo
   # ================================
-  echo '>>> Initializing Evox repo'
+  echo '>>> Initializing InfinityX repo'
   $BUILD_DIFFERENT_ROM
 
   # ================================
   # Clone local manifests
   # ================================
   echo '>>> Cloning local manifests'
-  git clone https://github.com/droidcore/manifest_peridot.git -b lineage-23.0 .repo/local_manifests/
+  git clone https://github.com/ryznstk/manifest_peridot.git -b lineage-23.0 .repo/local_manifests/
 
   # ================================
   # Sync sources
@@ -70,7 +70,7 @@ crave run --no-patch -- "
   # Build
   # ================================
   echo '>>> Starting build'
-  lunch lineage_peridot-bp4a-user
+  lunch infinity_peridot-user
   make installclean
-  m evolution 
+  m bacon 
 "
